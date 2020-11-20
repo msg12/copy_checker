@@ -1,18 +1,17 @@
-no_of_questions, no_of_students = 100, 100
-
-import os
-import nltk
-from nltk.corpus import stopwords, wordnet
-from nltk.stem import WordNetLemmatizer, PorterStemmer, LancasterStemmer, SnowballStemmer
-from collections import OrderedDict
-from nltk.tokenize import sent_tokenize, word_tokenize
-
-
-import pytesseract as tess
-from PIL import Image
-
-import img_to_txt_model
+import webbrowser
+import tkinter.messagebox
+from tkinter import *
 import img_to_txt_student
+import img_to_txt_model
+from PIL import Image
+import pytesseract as tess
+from nltk.tokenize import sent_tokenize, word_tokenize
+from collections import OrderedDict
+from nltk.stem import WordNetLemmatizer, PorterStemmer, LancasterStemmer, SnowballStemmer
+from nltk.corpus import stopwords, wordnet
+import nltk
+import os
+no_of_questions, no_of_students = 100, 100
 
 
 modelimgpath = './MODEL_ANSWER(img)/'
@@ -23,14 +22,14 @@ modeltextpath = './MODEL_ANSWER(text)/'
 
 def model_things():
 
-   i=2
-   img_to_txt_model.func(no_of_questions)
+    i = 2
+    img_to_txt_model.func(no_of_questions)
 
 
 def student_things():
 
-   i=2
-   img_to_txt_student.func(no_of_questions,no_of_students)
+    i = 2
+    img_to_txt_student.func(no_of_questions, no_of_students)
 
 
 def generatekeywords(filepath2):
@@ -87,10 +86,10 @@ def generatekeywords(filepath2):
 
 
 def semanticsimilarity(a, b):
-    a, b = a.lower(), b.lower()  #converting them into lowercase
+    a, b = a.lower(), b.lower()  # converting them into lowercase
 
-    l1 = wordnet.synsets(a)  #printing synsets of a
-    l2 = wordnet.synsets(b)  #printing synsets of b
+    l1 = wordnet.synsets(a)  # printing synsets of a
+    l2 = wordnet.synsets(b)  # printing synsets of b
 
     if (len(l1) == 0 or len(l2) == 0):
         return (0)
@@ -213,7 +212,7 @@ def mapp_it(s, t1):
                                     word[k -
                                          1:k:])[0][1] == "VBD" or nltk.pos_tag(
                                              word[k - 1:k:]
-                                         )[0][1] == "JJ" or nltk.pos_tag(
+                        )[0][1] == "JJ" or nltk.pos_tag(
                                              word[k -
                                                   1:k:])[0][1][:2:] == "RB":
                             nex = 0
@@ -324,7 +323,7 @@ def match(mapp1, mapp2):
                         if sim_word > 0.75 and l != j[0]:
                             pres = 1
                             count += 1
-                            #print(count,i[k][0],l[0])
+                            # print(count,i[k][0],l[0])
                             x = 0
                             for z in range(len(mapp2)):
                                 if mapp2[z][0][0] == l[0]:
@@ -333,8 +332,8 @@ def match(mapp1, mapp2):
                                                 0] == "neither" or mapp2[z][1][
                                                     0] == "never":
                                         x = 1
-                                        #count-=1
-                                        #neg+=1
+                                        # count-=1
+                                        # neg+=1
                                         break
                             if x == 1:
                                 pres = 2
@@ -365,7 +364,7 @@ def match(mapp1, mapp2):
                                             pres = 1
                                             count += 1
                                             break
-                    #sprint(c,count)
+                    # sprint(c,count)
                     if c == count:
                         if pres != 2:
                             pres = 0
@@ -376,13 +375,13 @@ def match(mapp1, mapp2):
                                             if semanticsimilarity(
                                                     i[k][0], x[0]) > 0.8:
                                                 pres = 1
-                                                #print(1)
+                                                # print(1)
                                                 break
                                         if pres == 1:
-                                            #print(2)
+                                            # print(2)
                                             break
                                 if pres == 1:
-                                    #print(3)
+                                    # print(3)
                                     break
                             if pres == 1:
                                 count += 1
@@ -416,8 +415,8 @@ def match(mapp1, mapp2):
                                                                         0] == "never":
                                                         ant = ""
                                                         for s in wordnet.synsets(
-                                                                mapp2[z][0]
-                                                            [0]):
+                                                            mapp2[z][0]
+                                                                [0]):
                                                             p = 1
                                                             for le in s.lemmas(
                                                             ):
@@ -511,11 +510,8 @@ def generatescore():
             f.write("\n")
 
 
-from tkinter import *
-import tkinter.messagebox
-import webbrowser
-myApp = Tk()
-myApp.title("AutoCheckMyAnswer")
+# myApp = Tk()
+# myApp.title("AutoCheckMyAnswer")
 
 
 def result():
@@ -565,11 +561,11 @@ def result():
 
 def window_for_exit():
     def yes_delete_everything():
-        myApp.destroy()
+        # myApp.destroy()
         master.destroy()
 
     def no_exit():
-      #   myApp.destroy()
+        # myApp.destroy()
         master.destroy()
 
     master = Tk()
@@ -641,8 +637,7 @@ def window_for_no_of_questions():
 
     wait_label = Label(
         master,
-        text=
-        "Please wait for 5-6 minutes a popup will appear after processing is finished",
+        text="Please wait for 5-6 minutes a popup will appear after processing is finished",
         fg="blue")
     wait_label.config(font=("Helvetica", 14))
     wait_label.grid(row=2, column=0, columnspan=2, sticky=N + E + S + W)
@@ -688,8 +683,7 @@ def window_for_evaluate():
 
     wait_label = Label(
         master,
-        text=
-        "Please wait for 5-6 minutes a popup will appear after Evaluation is finished"
+        text="Please wait for 5-6 minutes a popup will appear after Evaluation is finished"
     )
     wait_label.config(font=("Helvetica", 17))
     wait_label.grid(row=1, column=0, columnspan=2, sticky=N + E + S + W)
@@ -746,8 +740,7 @@ def window_for_no_of_students():
 
     wait_label1 = Label(
         master1,
-        text=
-        "Please wait for 5-6 minutes a popup will appear after processing is finished"
+        text="Please wait for 5-6 minutes a popup will appear after processing is finished"
     )
     wait_label1.config(font=("Helvetica", 14))
     wait_label1.grid(row=2, column=0, columnspan=2, sticky=N + E + S + W)
@@ -755,95 +748,95 @@ def window_for_no_of_students():
     master1.mainloop()
 
 
-instruction_frame = Frame(myApp)
-instruction_frame.pack(fill=BOTH, expand=1)
+# instruction_frame = Frame(myApp)
+# instruction_frame.pack(fill=BOTH, expand=1)
 
 
 def showInstructions():
     webbrowser.open("instructions.txt")
 
 
-firstFrame = Frame(myApp)
-firstFrame.pack(fill=BOTH, expand=1)
+# firstFrame = Frame(myApp)
+# firstFrame.pack(fill=BOTH, expand=1)
 
-secondFrame = Frame(myApp)
-secondFrame.pack(fill=BOTH, expand=1)
+# secondFrame = Frame(myApp)
+# secondFrame.pack(fill=BOTH, expand=1)
 
-for x in range(3):
-    Grid.columnconfigure(firstFrame, x, weight=1)
+# for x in range(3):
+#     Grid.columnconfigure(firstFrame, x, weight=1)
 
-for y in range(3):
-    Grid.rowconfigure(firstFrame, y, weight=1)
+# for y in range(3):
+#     Grid.rowconfigure(firstFrame, y, weight=1)
 
-for x in range(3):
-    Grid.columnconfigure(secondFrame, x, weight=1)
+# for x in range(3):
+#     Grid.columnconfigure(secondFrame, x, weight=1)
 
-for y in range(3):
-    Grid.rowconfigure(secondFrame, y, weight=1)
+# for y in range(3):
+#     Grid.rowconfigure(secondFrame, y, weight=1)
 
-for x in range(3):
-    Grid.columnconfigure(instruction_frame, x, weight=1)
+# for x in range(3):
+#     Grid.columnconfigure(instruction_frame, x, weight=1)
 
-for y in range(3):
-    Grid.rowconfigure(instruction_frame, y, weight=1)
+# for y in range(3):
+#     Grid.rowconfigure(instruction_frame, y, weight=1)
 
-instr_button = Button(instruction_frame,
-                      text="Instructions",
-                      width=15,
-                      height=10,
-                      fg="purple",
-                      bg="yellow",
-                      command=showInstructions)
-instr_button.config(font=("Helvetica", 17))
-instr_button.grid(row=0, column=0, sticky=N + E + S + W)
+# instr_button = Button(instruction_frame,
+#                       text="Instructions",
+#                       width=15,
+#                       height=10,
+#                       fg="purple",
+#                       bg="yellow",
+#                       command=showInstructions)
+# instr_button.config(font=("Helvetica", 17))
+# instr_button.grid(row=0, column=0, sticky=N + E + S + W)
 
-quit_button = Button(instruction_frame,
-                     text="Quit",
-                     width=15,
-                     height=10,
-                     fg="purple",
-                     bg="yellow",
-                     command=window_for_exit)
-quit_button.config(font=("Helvetica", 17))
-quit_button.grid(row=0, column=1, sticky=N + E + S + W)
+# quit_button = Button(instruction_frame,
+#                      text="Quit",
+#                      width=15,
+#                      height=10,
+#                      fg="purple",
+#                      bg="yellow",
+#                      command=window_for_exit)
+# quit_button.config(font=("Helvetica", 17))
+# quit_button.grid(row=0, column=1, sticky=N + E + S + W)
 
-button1 = Button(firstFrame,
-                 text="Model Answers",
-                 width=15,
-                 height=10,
-                 fg="purple",
-                 bg="yellow",
-                 command=window_for_no_of_questions)
-button1.config(font=("Helvetica", 17))
-button1.grid(row=1, column=0, sticky=N + E + S + W)
+# button1 = Button(firstFrame,
+#                  text="Model Answers",
+#                  width=15,
+#                  height=10,
+#                  fg="purple",
+#                  bg="yellow",
+#                  command=window_for_no_of_questions)
+# button1.config(font=("Helvetica", 17))
+# button1.grid(row=1, column=0, sticky=N + E + S + W)
 
-button2 = Button(firstFrame,
-                 text="Students' Answers",
-                 width=15,
-                 height=10,
-                 fg="purple",
-                 bg="yellow",
-                 command=window_for_no_of_students)
-button2.config(font=("Helvetica", 17))
-button2.grid(row=1, column=1, sticky=N + E + S + W)
+# button2 = Button(firstFrame,
+#                  text="Students' Answers",
+#                  width=15,
+#                  height=10,
+#                  fg="purple",
+#                  bg="yellow",
+#                  command=window_for_no_of_students)
+# button2.config(font=("Helvetica", 17))
+# button2.grid(row=1, column=1, sticky=N + E + S + W)
 
-button3 = Button(secondFrame,
-                 text="Evaluate",
-                 width=15,
-                 height=10,
-                 fg="purple",
-                 bg="yellow",
-                 command=window_for_evaluate)
-button3.config(font=("Helvetica", 17))
-button3.grid(row=2, column=0, sticky=N + E + S + W)
+# button3 = Button(secondFrame,
+#                  text="Evaluate",
+#                  width=15,
+#                  height=10,
+#                  fg="purple",
+#                  bg="yellow",
+#                  command=window_for_evaluate)
+# button3.config(font=("Helvetica", 17))
+# button3.grid(row=2, column=0, sticky=N + E + S + W)
 
-button4 = Button(secondFrame,
-                 text="Results",
-                 width=15,
-                 height=10,
-                 fg="purple",
-                 bg="yellow",
-                 command=result)
-button4.config(font=("Helvetica", 17))
-button4.grid(row=2, column=1, sticky=N + E + S + W)
-myApp.mainloop()
+# button4 = Button(secondFrame,
+#                  text="Results",
+#                  width=15,
+#                  height=10,
+#                  fg="purple",
+#                  bg="yellow",
+#                  command=result)
+# button4.config(font=("Helvetica", 17))
+# button4.grid(row=2, column=1, sticky=N + E + S + W)
+# myApp.mainloop()
