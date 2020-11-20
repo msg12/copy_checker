@@ -606,8 +606,14 @@ def window_for_no_of_questions():
         print(no_of_questions)
 
         def destroy_popups():
-            popup.destroy()
-            master.destroy()
+            try:
+                popup.destroy()
+            except:
+                pass
+            try:
+                master.destroy()
+            except:
+                pass
 
         popup = Tk()
         popup.wm_title(" ")
@@ -662,8 +668,14 @@ def window_for_evaluate():
         generatescore()
 
         def destroy_popups():
-            popup.destroy()
-            master.destroy()
+            try:
+                popup.destroy()
+            except:
+                pass
+            try:
+                master.destroy()
+            except:
+                pass
 
         popup = Tk()
         popup.wm_title(" ")
@@ -710,8 +722,14 @@ def window_for_no_of_students():
         student_things()
 
         def destroy_popups():
-            popup1.destroy()
-            master1.destroy()
+            try:
+                popup1.destroy()
+            except:
+                pass
+            try:
+                master1.destroy()
+            except:
+                pass
 
         popup1 = Tk()
         popup1.wm_title(" ")
