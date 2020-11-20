@@ -562,11 +562,17 @@ def result():
 def window_for_exit():
     def yes_delete_everything():
         # myApp.destroy()
-        master.destroy()
+        try:
+            master.destroy()
+        except:
+            pass
 
     def no_exit():
         # myApp.destroy()
-        master.destroy()
+        try:
+            master.destroy()
+        except:
+            pass
 
     master = Tk()
     master.title(" ")
