@@ -10,11 +10,12 @@ image2 = image2.resize((1550, 850), Image.ANTIALIAS)
 image1 = ImageTk.PhotoImage(image2)
 w = image1.width()
 h = image1.height()
-app.geometry('%dx%d+120+100' % (w, h))
+app.geometry('%dx%d+200+100' % (w, h))
 
 
 # Creating Menubar
 menubar = Menu(app)
+menubar.configure(bg='yellow', fg="red")
 
 
 def window_for_exits():
@@ -28,10 +29,11 @@ def window_for_exits():
 # Adding ans Menu and commands
 ans = Menu(menubar, tearoff=0)
 menubar.add_cascade(label='Answer', menu=ans)
-ans.add_separator()
+# ans.add_separator()
 ans.add_command(label='Model Answer', command=window_for_no_of_questions)
-ans.add_separator()
+# ans.add_separator()
 ans.add_command(label='Student Answer', command=window_for_no_of_students)
+# ans.add_separator()
 
 # Adding Evaluate Menu and commands
 evaluate = Menu(menubar, tearoff=0)
