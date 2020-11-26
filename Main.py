@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 import os
 from upload_file import window_for_upload_model_ans, window_for_upload_student_ans
+from view_file import window_for_viewing_model_ans, window_for_viewing_student_ans
 from MainwithGUI import *
 
 
@@ -60,6 +61,13 @@ upload_.add_command(label='Model Answer', command=window_for_upload_model_ans)
 upload_.add_command(label='Student Answer',
                     command=window_for_upload_student_ans)
 
+# View files
+
+view_ = Menu(menubar, tearoff=0)
+menubar.add_cascade(label='View', menu=view_)
+view_.add_command(label='Model Answer', command=window_for_viewing_model_ans)
+view_.add_command(label='Student Answer',
+                  command=window_for_viewing_student_ans)
 
 # quit
 quit_ = Menu(menubar, tearoff=0)
