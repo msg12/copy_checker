@@ -11,7 +11,7 @@ from nltk.stem import WordNetLemmatizer, PorterStemmer, LancasterStemmer, Snowba
 from nltk.corpus import stopwords, wordnet
 import nltk
 import os
-no_of_questions, no_of_students = 100, 100
+no_of_questions, no_of_students = 4, 2
 
 
 modelimgpath = './MODEL_ANSWER(img)/'
@@ -229,7 +229,8 @@ def mapp_it(s, t1):
                     rem.append([i, mapp[i][j - 1]])
 
     for i in rem:
-        mapp[i[0]].remove(i[1])
+        if i[1] in mapp[i[0]]:
+            mapp[i[0]].remove(i[1])
 
     mapp += app
 
