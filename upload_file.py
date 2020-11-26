@@ -5,14 +5,14 @@ import os
 
 def window_for_upload_student_ans():
     root = Tk()
-    root.geometry("300x100")
+    root.geometry("320x80")
     dest = './STUDENTS_ANSWER(img)/'
 
     def submit():
         newpath = create_student(dest)
         print(newpath)
         root1 = Tk()
-        root1.geometry("300x100")
+        root1.geometry("300x120")
         src1_var = StringVar()
 
         dest1 = newpath
@@ -67,7 +67,7 @@ def window_for_upload_student_ans():
 
     def submit2():
         root2 = Tk()
-        root2.geometry("300x150")
+        root2.geometry("300x120")
         src2_var = StringVar()
         stu2_var = StringVar()
 
@@ -129,15 +129,17 @@ def window_for_upload_student_ans():
 
     sub_btn = Button(root, text='New Student',
                      bg="green",
-                     fg="yellow",
+                     fg="yellow", width=10,
+                     height=2,
                      command=submit)
     sub_btn1 = Button(root, text='Existing Student',
                       bg="green",
-                      fg="yellow",
+                      fg="yellow", width=10,
+                      height=2,
                       command=submit2)
 
-    sub_btn.grid(row=3, column=1, padx=10, pady=10)
-    sub_btn1.grid(row=3, column=2, padx=10, pady=10)
+    sub_btn.grid(row=3, column=1, padx=20, pady=15)
+    sub_btn1.grid(row=3, column=2, padx=20, pady=15)
 
     root.mainloop()
 
