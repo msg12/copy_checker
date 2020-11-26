@@ -1,6 +1,6 @@
 # copy_checker
 
-to run  :-
+This is procedure to run  :-
 
 python3 Main2.0withGUI.py
 
