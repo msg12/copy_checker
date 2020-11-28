@@ -104,6 +104,7 @@ def window_for_upload_student_ans():
             B1.config(font=("Helvetica", 14))
             B1.pack(padx=50, pady=50)
             popup.mainloop()
+            destroy_popups()
 
         stu2_label = Label(root2, text='Student_No',
                            font=('calibre',
@@ -177,6 +178,7 @@ def window_for_upload_model_ans():
         B1.config(font=("Helvetica", 14))
         B1.pack(padx=50, pady=50)
         popup.mainloop()
+        destroy_popups()
 
     src_label = Label(root, text='import_path ',
                       font=('calibre',

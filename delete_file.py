@@ -23,6 +23,7 @@ def window_for_deleting_model_ans():
                 root.destroy()
             except:
                 pass
+        destroy_popups()
 
     ques_label = Label(root, text='Question_No',
                        font=('calibre',
@@ -66,6 +67,7 @@ def window_for_deleting_student_ans():
                 root.destroy()
             except:
                 pass
+        destroy_popups()
 
     stu_label = Label(root, text='Student_No',
                       font=('calibre',

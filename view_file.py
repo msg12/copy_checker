@@ -17,19 +17,16 @@ def window_for_viewing_model_ans():
         canvas.pack()
         img = ImageTk.PhotoImage(Image.open(path))
         canvas.create_image(500, 300, anchor=CENTER, image=img)
-        md.mainloop()
-
-        quesno1.set("")
 
         def destroy_popups():
             try:
                 root.destroy()
             except:
                 pass
-            try:
-                md.destroy()
-            except:
-                pass
+        destroy_popups()
+        md.mainloop()
+
+        quesno1.set("")
 
     ques_label = Label(root, text='Question_No',
                        font=('calibre',
@@ -66,19 +63,15 @@ def window_for_viewing_student_ans():
         canvas.pack()
         img = ImageTk.PhotoImage(Image.open(path))
         canvas.create_image(500, 300, anchor=CENTER, image=img)
-        md.mainloop()
-
-        quesno1.set("")
 
         def destroy_popups():
             try:
                 root.destroy()
             except:
                 pass
-            try:
-                md.destroy()
-            except:
-                pass
+        destroy_popups()
+        md.mainloop()
+        quesno1.set("")
 
     stu_label = Label(root, text='Student_No',
                       font=('calibre',
