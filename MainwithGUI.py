@@ -68,10 +68,10 @@ def generatekeywords(filepath2):
     lemmatized_word_list = []
     for i in stemmed_word_list:
         k = lemmatizer.lemmatize(i[0])
-        if (semanticsimilarity(k, i[0]) >= 0.6):
-            lemmatized_word_list.append(i)
-        else:
-            lemmatized_word_list.append(i)
+        # if (semanticsimilarity(k, i[0]) >= 0.6):
+        lemmatized_word_list.append(i)
+        # else:
+        # lemmatized_word_list.append(i)
 
     final_processed_word_list = []
     for i in tagged_word_list:

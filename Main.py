@@ -19,7 +19,7 @@ app.geometry('%dx%d+200+100' % (w, h))
 
 # Creating Menubar
 menubar = Menu(app)
-menubar.configure(bg='yellow')
+# menubar.configure(bg='black', fg='white')
 
 
 def window_for_exits():
