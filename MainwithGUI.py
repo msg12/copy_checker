@@ -650,7 +650,7 @@ def window_for_no_of_questions():
 
     wait_label = Label(
         master,
-        text="Please wait for 5-6 minutes a popup will appear after processing is finished",
+        text="Please wait for some minutes a popup will appear after processing is finished",
         fg="blue")
     wait_label.config(font=("Helvetica", 14))
     wait_label.grid(row=2, column=0, columnspan=2, sticky=N + E + S + W)
@@ -702,7 +702,7 @@ def window_for_evaluate():
 
     wait_label = Label(
         master,
-        text="Please wait for 5-6 minutes a popup will appear after Evaluation is finished"
+        text="Please wait for some minutes a popup will appear after Evaluation is finished"
     )
     wait_label.config(font=("Helvetica", 17))
     wait_label.grid(row=1, column=0, columnspan=2, sticky=N + E + S + W)
@@ -765,7 +765,7 @@ def window_for_no_of_students():
 
     wait_label1 = Label(
         master1,
-        text="Please wait for 5-6 minutes a popup will appear after processing is finished"
+        text="Please wait for some minutes a popup will appear after processing is finished"
     )
     wait_label1.config(font=("Helvetica", 14))
     wait_label1.grid(row=2, column=0, columnspan=2, sticky=N + E + S + W)
