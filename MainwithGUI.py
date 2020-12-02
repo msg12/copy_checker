@@ -11,7 +11,7 @@ from nltk.stem import WordNetLemmatizer, PorterStemmer, LancasterStemmer, Snowba
 from nltk.corpus import stopwords, wordnet
 import nltk
 import os
-no_of_questions, no_of_students = 4, 2
+no_of_questions, no_of_students = 10, 2
 
 
 modelimgpath = './MODEL_ANSWER(img)/'
@@ -52,13 +52,13 @@ def generatekeywords(filepath2):
         if (i[0][len(i[0]) - 2:] == 'ly'):
             k = LancasterStemmer().stem(i[0])
             if (semanticsimilarity(k, i[0]) >= 0.6):
-                stemmed_word_list.append(i)
+                stemmed_word_list.append(k)
             else:
                 stemmed_word_list.append(i)
         elif (i[0][len(i[0]) - 1] != 'e'):
             k = PorterStemmer().stem(i[0])
             if (semanticsimilarity(k, i[0]) >= 0.6):
-                stemmed_word_list.append(i)
+                stemmed_word_list.append(k)
             else:
                 stemmed_word_list.append(i)
         else:
@@ -68,11 +68,13 @@ def generatekeywords(filepath2):
     lemmatized_word_list = []
     for i in stemmed_word_list:
         k = lemmatizer.lemmatize(i[0])
-        # if (semanticsimilarity(k, i[0]) >= 0.6):
-        lemmatized_word_list.append(i)
-        # else:
-        # lemmatized_word_list.append(i)
-
+        if (semanticsimilarity(k, i[0]) >= 0.6):
+            lemmatized_word_list.append(k)
+        else:
+            lemmatized_word_list.append(i)
+    # tagged_word_list = lemmatized_word_list
+    # print(lemmatized_word_list)
+    # tagged_word_list = stemmed_word_list
     final_processed_word_list = []
     for i in tagged_word_list:
         if (i[1] == 'CD' or i[1] == 'FW' or i[1] == 'NN' or i[1] == 'NNS'
