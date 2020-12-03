@@ -2,10 +2,7 @@
 
 
 This is procedure to run  :-	This is procedure to run the GUI of the project :-  python Main.py
-
 and install the necessary library i.e:
-python3 Main.py	
-
 
 sudo apt install tesseract-ocr	sudo apt install tesseract-ocr
 sudo apt install libtesseract-dev	sudo apt install libtesseract-dev
